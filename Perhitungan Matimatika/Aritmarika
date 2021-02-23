@@ -1,0 +1,90 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(App12());
+
+class App12 extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'KUIS 1',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Jerry Pratama Tarigan'),
+          backgroundColor: Colors.black,
+        ),
+        body: NurcahyoApp(),
+      ),
+    );
+  }
+}
+
+class NurcahyoApp extends StatefulWidget {
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<NurcahyoApp> {
+  final txtnama = TextEditingController();
+  final txtjmasuk = TextEditingController();
+  final txtjkeluar = TextEditingController();
+  final txttarif = TextEditingController();
+
+  String hasil = '';
+  String ucap ='';
+  onHitung() {
+    setState(() {
+
+     final lama = int.parse(txtjkeluar.text) - int.parse(txtjmasuk.text);
+      final total = int.parse(txttarif.text) * lama ;
+
+      hasil = "Lama Waktu $lama jam \nBiaya ${txtnama.text} adalah Rp. $total";
+
+      if (lama > 1) hasil = hasil + "\nBonus Teh Botol Sosro";
+
+      ucap = "Terimakasih atas kunjungannya ${txtnama.text}";
+
+    });
+  }
+
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        children: <Widget>[
+          TextField(
+            controller: txtnama,
+            decoration: new InputDecoration(
+              labelText: "Nama User",
+            ),
+          ),
+          TextField(
+            controller: txtjmasuk,
+            decoration: new InputDecoration(
+              labelText: "Jam Masuk",
+            ),
+          ),
+          TextField(
+            controller: txtjkeluar,
+            decoration: new InputDecoration(
+              labelText: "Jam Keluar",
+            ),
+          ),
+          TextField(
+            controller: txttarif,
+            decoration: new InputDecoration(
+              labelText: "Tarif",
+            ),
+          ),
+          ElevatedButton(
+            child: Text("Hitung"),
+            onPressed: onHitung,
+          ),
+          Text("$hasil"),
+          Text(""),
+          Text("$ucap"),
+
+
+
+        ],
+      ),
+    );
+  }
+}
