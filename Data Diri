@@ -1,0 +1,27 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Biodata Diri'),
+        ),
+        body: Center(
+          child: Column(
+            children:[
+            Text('Nama   : Jerry Pratama Tarigan'),
+            Text('Alamat : komp ikip'),
+            Text('Telepon : 0831-9454-2262'),
+            Text('E-mail : jerrypratamatarigan@gmail.com'),
+
+              ],
+            ),
+        ),
+      ),
+    );
+  }
+}
